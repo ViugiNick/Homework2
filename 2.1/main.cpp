@@ -14,7 +14,10 @@ int main()
     cin >> n;
 
     for(int i = 0; i < n; i++)
+    {
         cin >> inputArray1[i];
+        inputArray2[i] = inputArray1[i];
+    }
 
     BSorter bSorting;
     bSorting.sort(inputArray1, n);
@@ -26,11 +29,11 @@ int main()
     cout << endl << "***" << endl;
 
     QSorter qSorting;
-    qSorting.sort(inputArray1, n);
+    qSorting.sort(inputArray2, n);
 
     for (int i = 0; i < n; ++i)
     {
-        cout << inputArray1[i] << " ";
+        cout << inputArray2[i] << " ";
     }
     cout << endl;
 
