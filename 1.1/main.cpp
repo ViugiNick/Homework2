@@ -32,7 +32,7 @@ int main()
     temp2->printList();
     cout << temp2->findInList(3) << endl;
     cout << temp2->findInList(1) << endl;
-    delete temp2;
+    delete temp1;
 
     return 0;
 }
