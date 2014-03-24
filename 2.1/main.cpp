@@ -10,10 +10,13 @@ using namespace std;
 
 int main()
 {
+    cout << "Enter size of array:" << endl;
     int n;
     cin >> n;
 
-    for(int i = 0; i < n; i++)
+    cout << "Enter you array:" << endl;
+
+    for (int i = 0; i < n; i++)
     {
         cin >> inputArray1[i];
         inputArray2[i] = inputArray1[i];

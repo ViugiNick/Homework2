@@ -1,4 +1,4 @@
-#include "arrayStack.h"
+#include "arraystack.h"
 #include <iostream>
 #include <cstdio>
 #include <string.h>
@@ -19,6 +19,10 @@ int operation(char c, int a, int b)
         return a - b;
     if(c == '/')
         return a / b;
+}
+bool isNumber(char c)
+{
+    return(c <= '9' && c >= '0');
 }
 
 int main() {
@@ -47,39 +51,35 @@ int main() {
     arrayStack *stack2 = new arrayStack();
     arrayStack *stack3 = new arrayStack();
 
-    printf("Input size of your expression : \n");
-    int n;
-    scanf("%d", &n);
+    char inputString[maxN];
+    cin.getline(inputString, maxN);
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < strlen(inputString); i++)
     {
-        char temp[maxSizeOfNumber];
-        scanf("%s", &temp);
-
-        if (temp[0] == '*' || temp[0] == '/' || temp[0] == '+' || temp[0] == '-')
+        if (inputString[i] == '*' || inputString[i] == '/' || inputString[i] == '+' || inputString[i] == '-')
         {
-            if (stack2->size() != 0 && priority[-stack2->top()] == priority[temp[0]])
+            if (stack2->size() != 0 && priority[-stack2->top()] == priority[inputString[i]])
             {
                 stack1->push(stack2->top());
                 stack2->pop();
-                stack2->push(-int(temp[0]));
+                stack2->push(-int(inputString[i]));
             }
             else
             {
-                stack2->push(-int(temp[0]));
+                stack2->push(-int(inputString[i]));
             }
             continue;
         }
 
-        if (temp[0] == '(')
+        if (inputString[i] == '(')
         {
-            stack2->push(-int(temp[0]));
+            stack2->push(-int(inputString[i]));
             continue;
         }
 
-        if (temp[0] == ')')
+        if (inputString[i] == ')')
         {
-            while (1)
+            while (true)
             {
                 if (stack2->top() == -int('('))
                 {
@@ -93,15 +93,17 @@ int main() {
             continue;
         }
 
-        if (temp[0] != '(' && temp[0] != ')')
+        if (inputString[i] != '(' && inputString[i] != ')')
         {
             int newElement = 0;
 
-            for (int i = 0; i < strlen(temp); i++)
+            while(isNumber(inputString[i]))
             {
                 newElement *= 10;
-                newElement += temp[i] - '0';
+                newElement += inputString[i] - '0';
+                i++;
             }
+            i--;
 
             stack1->push(newElement);
         }
