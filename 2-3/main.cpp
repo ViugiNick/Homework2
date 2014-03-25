@@ -15,7 +15,7 @@ int main()
         inputArray[i] = new int[n];
     }
 
-    cout << "Enter your matrix" << endl;
+    cout << "Enter your array" << endl;
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             cin >> inputArray[i][j];
