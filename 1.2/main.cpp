@@ -53,8 +53,9 @@ int main() {
 
     char inputString[maxN];
     cin.getline(inputString, maxN);
+    int sizeOfString = strlen(inputString);
 
-    for (int i = 0; i < strlen(inputString); i++)
+    for (int i = 0; i < sizeOfString; i++)
     {
         if (inputString[i] == '*' || inputString[i] == '/' || inputString[i] == '+' || inputString[i] == '-')
         {
