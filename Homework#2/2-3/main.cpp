@@ -1,4 +1,3 @@
-//2-3
 #include <iostream>
 #include "bsorter.h"
 

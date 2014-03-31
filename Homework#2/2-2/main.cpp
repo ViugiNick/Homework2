@@ -1,4 +1,3 @@
-//2-2
 #include "consoleout.h"
 #include "fileout.h"
 #include <iostream>

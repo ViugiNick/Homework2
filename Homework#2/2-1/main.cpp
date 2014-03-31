@@ -1,4 +1,3 @@
-//2-1
 #include <iostream>
 #include "bsorter.h"
 #include "qsorter.h"
