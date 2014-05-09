@@ -2,10 +2,10 @@
 #include "stackelement.h"
 #pragma once
 
-class arrayStack : public Stack
+class ArrayStack : public Stack
 {
     public:
-        ~arrayStack();
+        ~ArrayStack();
         int size();
         int top();
         void push(int val);

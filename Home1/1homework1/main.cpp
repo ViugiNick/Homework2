@@ -1,6 +1,6 @@
 #include <QCoreApplication>
-#include "singlyLinkedList.h"
-#include "doublyLinkedList.h"
+#include "singlylinkedlist.h"
+#include "doublylinkedlist.h"
 #include "testdoubly.h"
 #include "testsingly.h"
 #include <iostream>
@@ -41,6 +41,7 @@ int main()
     cout << temp2->findInList(3) << endl;
     cout << temp2->findInList(1) << endl;
     delete temp1;
+    delete temp2;
 
     return 0;
 }

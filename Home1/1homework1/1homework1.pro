@@ -13,7 +13,6 @@ SOURCES += main.cpp \
 HEADERS += \
     doublylinkedlist.h \
     list.h \
-    listeleent.h \
     listelement.h \
     singlylinkedlist.h \
     testDoubly.h \

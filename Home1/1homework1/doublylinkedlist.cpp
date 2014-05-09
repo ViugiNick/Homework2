@@ -1,4 +1,4 @@
-#include "doublyLinkedList.h"
+#include "doublylinkedlist.h"
 
 doublyLinkedList::~doublyLinkedList()
 {

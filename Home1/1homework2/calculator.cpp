@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include "arrayStack.h"
+#include "arraystack.h"
 
 using namespace std;
 

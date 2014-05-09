@@ -1,41 +1,41 @@
 #include "arraystack.h"
 #include "iostream"
 
-arrayStack::~arrayStack()
+ArrayStack::~ArrayStack()
 {
     deleteStack();
 }
 
-int arrayStack::size()
+int ArrayStack::size()
 {
     return currentLength;
 }
 
-int arrayStack::top()
+int ArrayStack::top()
 {
     if (currentLength == 0)
         return -1;
     return mainArray[currentLength - 1];
 }
 
-void arrayStack::push(int val)
+void ArrayStack::push(int val)
 {
     mainArray[currentLength] = val;
     currentLength++;
 }
 
-void arrayStack::pop()
+void ArrayStack::pop()
 {
     currentLength--;
 }
 
-void arrayStack::deleteStack()
+void ArrayStack::deleteStack()
 {
     delete[] mainArray;
     currentLength = 0;
 }
 
-void arrayStack::printStack()
+void ArrayStack::printStack()
 {
     for(int i = 0; i < currentLength; i++)
     {
@@ -44,7 +44,7 @@ void arrayStack::printStack()
     printf("\n");
 }
 
-bool arrayStack::findInStack(int val)
+bool ArrayStack::findInStack(int val)
 {
     for(int i = 0; i < currentLength; i++)
     {

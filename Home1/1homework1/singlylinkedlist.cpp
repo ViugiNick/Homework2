@@ -1,12 +1,12 @@
-#include "singlyLinkedList.h"
+#include "singlylinkedlist.h"
 
-singlyLinkedList::~singlyLinkedList()
+SinglyLinkedList::~SinglyLinkedList()
 {
     deleteList();
     delete head;
 }
 
-int singlyLinkedList::size()
+int SinglyLinkedList::size()
 {
     int result = 0;
     ListElement * l = head->goToNext();
@@ -20,7 +20,7 @@ int singlyLinkedList::size()
     return result;
 }
 
-void singlyLinkedList::insertToPosition(int pos, int val)
+void SinglyLinkedList::insertToPosition(int pos, int val)
 {
     ListElement * currentElement = head;
 
@@ -33,7 +33,7 @@ void singlyLinkedList::insertToPosition(int pos, int val)
     currentElement->makeLink(temp);
 }
 
-void singlyLinkedList::deleteOnPosition(int pos)
+void SinglyLinkedList::deleteOnPosition(int pos)
 {
     ListElement * currentElement = head;
     for(int i = 0; i < pos; i++)
@@ -44,7 +44,7 @@ void singlyLinkedList::deleteOnPosition(int pos)
     delete temp;
 }
 
-void singlyLinkedList::deleteList()
+void SinglyLinkedList::deleteList()
 {
     int size = this->size();
 
@@ -56,7 +56,7 @@ void singlyLinkedList::deleteList()
     }
 }
 
-void singlyLinkedList::printList()
+void SinglyLinkedList::printList()
 {
     ListElement * currentElement = head->goToNext();
 
@@ -68,7 +68,7 @@ void singlyLinkedList::printList()
     printf("\n");
 }
 
-bool singlyLinkedList::findInList(int val)
+bool SinglyLinkedList::findInList(int val)
 {
     ListElement * currentElement = head->goToNext();
 

@@ -1,12 +1,12 @@
 #include "linkedstack.h"
 
-linkedStack::~linkedStack()
+LinkedStack::~LinkedStack()
 {
     deleteStack();
     delete head;
 }
 
-int linkedStack::size()
+int LinkedStack::size()
 {
     int result = 0;
     StackElement * l = head->goToNext();
@@ -20,12 +20,12 @@ int linkedStack::size()
     return result;
 }
 
-int linkedStack::top()
+int LinkedStack::top()
 {
     return head->goToNext()->value();
 }
 
-void linkedStack::push(int val)
+void LinkedStack::push(int val)
 {
     StackElement * temp = new StackElement();
     temp->makeValue(val);
@@ -33,7 +33,7 @@ void linkedStack::push(int val)
     head->makeLink(temp);
 }
 
-void linkedStack::pop()
+void LinkedStack::pop()
 {
     StackElement * tmp = head->goToNext();
 
@@ -41,7 +41,7 @@ void linkedStack::pop()
     delete tmp;
 }
 
-void linkedStack::deleteStack()
+void LinkedStack::deleteStack()
 {
     int size = this->size();
 
@@ -49,7 +49,7 @@ void linkedStack::deleteStack()
         this->pop();
 }
 
-void linkedStack::printStack()
+void LinkedStack::printStack()
 {
     int size = this->size();
     StackElement * tmp = head->goToNext();
@@ -62,7 +62,7 @@ void linkedStack::printStack()
     printf("\n");
 }
 
-bool linkedStack::findInStack(int val)
+bool LinkedStack::findInStack(int val)
 {
     StackElement * currentElement = head->goToNext();
 

@@ -2,10 +2,10 @@
 #include "stackelement.h"
 #pragma once
 
-class linkedStack : public Stack
+class LinkedStack : public Stack
 {
     public:
-        ~linkedStack();
+        ~LinkedStack();
         int size();
         int top();
         void push(int val);
