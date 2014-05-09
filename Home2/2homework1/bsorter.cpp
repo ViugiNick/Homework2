@@ -1,4 +1,3 @@
-#pragma once
 #include "bsorter.h"
 
 void BSorter::sort(int * inputArray, int size)
