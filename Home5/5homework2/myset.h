@@ -1,19 +1,29 @@
 #pragma once
 #include <QList>
 #include <iostream>
+#include <myseterror.h>
 
 template<typename T>
+///Class MySet, based on QList
 class MySet
 {
     public:
-        QList<T> mySetToQList() const;
-        void add(T val);
-        int sizeOfSet() const;
-        bool find(T val) const;
-        void deleteFromSet(T val);
-        void intersectSet(const MySet<T> &firstSet, const MySet<T> &secondSet);
-        void unionSet(const MySet<T> &firstSet, const MySet<T> &secondSet);
-        void clearSet();
+        ///Method to return QList, on which based MySet
+	QList<T> mySetToQList() const;
+        ///Method to add value to MySet
+	void add(T val);
+        ///Method, which return size of MySet
+	int sizeOfSet() const;
+        ///Method, which sh
+	bool find(T val) const;
+        ///Method to delete element from set
+	void deleteFromSet(T val);
+        ///Method, which intersect two sets, and this<-result
+	void intersectSet(const MySet<T> &firstSet, const MySet<T> &secondSet);
+        ///Method, which union two sets, and this<-result
+	void unionSet(const MySet<T> &firstSet, const MySet<T> &secondSet);
+        ///Method to clear set
+	void clearSet();
     private:
         QList <T> mainList;
 };
@@ -49,6 +59,11 @@ void MySet <T>::deleteFromSet(T val)
 {
     if (find(val))
         mainList.removeOne(val);
+    else
+    {
+        SetErrors::NoSuchVal error;
+        throw error;
+    }
 }
 
 template<typename T>

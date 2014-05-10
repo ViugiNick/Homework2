@@ -20,4 +20,5 @@ SOURCES += main.cpp
 
 HEADERS += \
     myset.h \
-    testMySet.h
+    testMySet.h \
+    myseterror.h

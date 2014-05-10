@@ -4,6 +4,7 @@
 #include <QtTest/QTest>
 #include "myset.h"
 #include "iostream"
+#include "myseterror.h"
 
 class TestMySet: public QObject
 {
@@ -21,12 +22,27 @@ class TestMySet: public QObject
             main.clearSet();
         }
 
+        void testBadDeleting()
+        {
+            main.add(1);
+            try
+            {
+                main.deleteFromSet(2);
+            }
+            catch(SetErrors::NoSuchVal &)
+            {
+                std::cout << "!!!No such value!!!" << std::endl;
+            }
+            main.deleteFromSet(1);
+            QVERIFY(main.sizeOfSet() == 0);
+            main.clearSet();
+        }
+
         void testDeleting()
         {
             main.add(1);
             main.deleteFromSet(1);
             QVERIFY(main.sizeOfSet() == 0);
-            main.clearSet();
         }
 
         void testIntersection()
