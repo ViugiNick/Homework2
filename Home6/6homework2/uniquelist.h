@@ -4,6 +4,8 @@
 class UniqueList : public singlyLinkedList
 {
     public:
-        void addElement(int pos, int val) throw (UniqueListErrors::FindEqualVal);
-        void deleteElement(int val) throw (UniqueListErrors::NoSuchVal);
+        ///Method, to add element in unique list
+	void addElement(int pos, int val) throw (UniqueListErrors::FindEqualVal);
+        ///Method, to delete element from unique list
+	void deleteElement(int val) throw (UniqueListErrors::NoSuchVal);
 };
