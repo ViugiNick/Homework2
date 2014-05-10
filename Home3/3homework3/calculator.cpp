@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include "arrayStack.h"
+#include "arraystack.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ bool isNumber(char c)
     return(c <= '9' && c >= '0');
 }
 
-int calculate(std::string inputString, int size)
+int calculateValue(std::string inputString, int size)
 {
         cerr << "Size" << size << endl;
         int priority[maxChar];

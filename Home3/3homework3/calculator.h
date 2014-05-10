@@ -1,1 +1,1 @@
-int calculate(std::string inputString, int size);
+int calculateValue(std::string inputString, int size);

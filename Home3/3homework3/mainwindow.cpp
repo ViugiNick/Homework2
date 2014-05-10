@@ -54,8 +54,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->button9, SIGNAL(clicked()), signalMapper, SLOT(map()));
     signalMapper->setMapping(ui->button9, "9");
 
-    connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(addToCalc(QString)));
-    connect(ui->buttonEqual, SIGNAL(clicked()), this, SLOT(getResult()));
+    connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(newDisplayString(QString)));
+    connect(ui->buttonEqual, SIGNAL(clicked()), this, SLOT(calculate()));
     connect(ui->buttonClear, SIGNAL(clicked()), this, SLOT(clear()));
 }
 
@@ -76,7 +76,7 @@ void MainWindow::calculate()
     QString tmp = ui->lineEdit->text();
     str = tmp.toStdString();
     //std::cout << "!" << str << "!" << std::endl;
-    int answer = calculate(str, str.size());
+    int answer = calculateValue(str, str.size());
     //std::cout << "!" << str << "!" << std::endl;
 
     emit ui->lineEdit->setText(QString::number(answer));
