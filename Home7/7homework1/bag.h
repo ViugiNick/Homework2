@@ -7,13 +7,18 @@
 using namespace std;
 
 template <typename T>
+///Class, based on multiset
 class Bag
 {
 public:
+    
     Bag(){}
+    ///Add element to our muliset
     void addElement(const T& element);
+    ///Delete element from out muliset
     void deleteElement(const T& element);
     bool find(const T& element);
+    ///Count number 'element' in multiset
     int count(const T& element);
 private:
     std::multiset <T> mainSet;
