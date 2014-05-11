@@ -18,10 +18,12 @@ public:
     ~MainWindow();
 
 private slots:
+    ///Method to show new operand on display
     void newDisplayString(QString qStr);
+    ///Method to count exprassion, which is on display
     void calculate();
+    ///Method to clear the display
     void clear();
-
 private:
     QSignalMapper * signalMapper;
     Ui::MainWindow *ui;

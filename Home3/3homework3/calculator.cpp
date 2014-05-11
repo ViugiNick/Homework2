@@ -51,7 +51,7 @@ int calculateValue(std::string inputString, int size)
             cerr << inputString[i] << endl;
             if (inputString[i] == '*' || inputString[i] == '/' || inputString[i] == '+' || inputString[i] == '-')
             {
-                if (stack2->size() != 0 && priority[-stack2->top()] == priority[inputString[i]])
+                if (stack2->size() != 0 && priority[-stack2->top()] >= priority[inputString[i]])
                 {
                     stack1->push(stack2->top());
                     stack2->pop();
