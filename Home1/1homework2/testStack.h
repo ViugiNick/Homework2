@@ -14,7 +14,7 @@ class TestStack: public QObject
     private slots:
         void init()
         {
-            mainStack = new arrayStack();
+            mainStack = new ArrayStack();
         }
         void cleanup()
         {
@@ -50,5 +50,5 @@ class TestStack: public QObject
         }
 
     private:
-        arrayStack * mainStack;
+        ArrayStack * mainStack;
 };
