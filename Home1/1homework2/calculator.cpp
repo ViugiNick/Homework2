@@ -35,9 +35,9 @@ int calculate(const char *inputString)
         priority['*'] = 2;
         priority['/'] = 2;
 
-        arrayStack *stack1 = new arrayStack();
-        arrayStack *stack2 = new arrayStack();
-        arrayStack *stack3 = new arrayStack();
+        ArrayStack *stack1 = new ArrayStack();
+        ArrayStack *stack2 = new ArrayStack();
+        ArrayStack *stack3 = new ArrayStack();
         int sizeOfString = strlen(inputString);
 
         for (int i = 0; i < sizeOfString; i++)

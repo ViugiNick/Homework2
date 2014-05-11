@@ -17,7 +17,7 @@ class TestDoublyLinkedLists: public QObject
     private slots:
         void init()
         {
-            mainList = new doublyLinkedList();
+            mainList = new DoublyLinkedList();
         }
         void cleanup()
         {
@@ -48,5 +48,5 @@ class TestDoublyLinkedLists: public QObject
         }
 
     private:
-        doublyLinkedList * mainList;
+        DoublyLinkedList * mainList;
 };

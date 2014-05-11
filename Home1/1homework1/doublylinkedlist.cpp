@@ -1,12 +1,12 @@
 #include "doublylinkedlist.h"
 
-doublyLinkedList::~doublyLinkedList()
+DoublyLinkedList::~DoublyLinkedList()
 {
     deleteList();
     delete head;
 }
 
-int doublyLinkedList::size()
+int DoublyLinkedList::size()
 {
     int result = 0;
     ListElement * l = head->goToNext();
@@ -20,7 +20,7 @@ int doublyLinkedList::size()
     return result;
 }
 
-void doublyLinkedList::insertToPosition(int pos, int val)
+void DoublyLinkedList::insertToPosition(int pos, int val)
 {
     ListElement * currentElement = head;
 
@@ -38,7 +38,7 @@ void doublyLinkedList::insertToPosition(int pos, int val)
     temp->makePrev(currentElement);
 }
 
-void doublyLinkedList::deleteOnPosition(int pos)
+void DoublyLinkedList::deleteOnPosition(int pos)
 {
     ListElement * currentElement = head;
     for(int i = 0; i < pos; i++)
@@ -53,7 +53,7 @@ void doublyLinkedList::deleteOnPosition(int pos)
     delete temp;
 }
 
-void doublyLinkedList::deleteList()
+void DoublyLinkedList::deleteList()
 {
     int size = this->size();
 
@@ -68,7 +68,7 @@ void doublyLinkedList::deleteList()
     }
 }
 
-void doublyLinkedList::printList()
+void DoublyLinkedList::printList()
 {
     ListElement * currentElement = head->goToNext();
 
@@ -80,7 +80,7 @@ void doublyLinkedList::printList()
     printf("\n");
 }
 
-bool doublyLinkedList::findInList(int val)
+bool DoublyLinkedList::findInList(int val)
 {
     ListElement * currentElement = head->goToNext();
 

@@ -1,8 +1,8 @@
 #include <QCoreApplication>
 #include "singlylinkedlist.h"
 #include "doublylinkedlist.h"
-#include "testDoubly.h"
-#include "testSingly.h"
+#include "testdoubly.h"
+#include "testsingly.h"
 #include <iostream>
 
 using namespace std;
@@ -14,7 +14,7 @@ int main()
 
     cout << "Singly Linked List" << endl;
 
-    singlyLinkedList *temp1 = new singlyLinkedList();
+    SinglyLinkedList *temp1 = new SinglyLinkedList();
 
     temp1->insertToPosition(0, 3);
     temp1->insertToPosition(1, 9);
@@ -30,7 +30,7 @@ int main()
     TestDoublyLinkedLists doublyTester;
     QTest::qExec(&doublyTester);
 
-    doublyLinkedList *temp2 = new doublyLinkedList();
+    DoublyLinkedList *temp2 = new DoublyLinkedList();
 
     cout << "!" << endl;
     temp2->insertToPosition(0, 3);

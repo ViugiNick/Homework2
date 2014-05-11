@@ -2,10 +2,10 @@
 #include "listelement.h"
 #pragma once
 
-class doublyLinkedList : public List
+class DoublyLinkedList : public List
 {
     public:
-        ~doublyLinkedList();
+        ~DoublyLinkedList();
         int size();
         void insertToPosition(int pos, int val);
         void deleteOnPosition(int pos);

@@ -14,7 +14,7 @@ class TestSinglyLinkedLists: public QObject
     private slots:
         void init()
         {
-            mainList = new singlyLinkedList();
+            mainList = new SinglyLinkedList();
         }
         void cleanup()
         {
@@ -44,5 +44,5 @@ class TestSinglyLinkedLists: public QObject
         }
 
     private:
-        singlyLinkedList * mainList;
+        SinglyLinkedList * mainList;
 };
