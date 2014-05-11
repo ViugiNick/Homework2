@@ -2,13 +2,13 @@
 #include "uniquelisterrors.h"
 #include <iostream>
 
-singlyLinkedList::~singlyLinkedList()
+SinglyLinkedList::~SinglyLinkedList()
 {
     deleteList();
     delete head;
 }
 
-int singlyLinkedList::size()
+int SinglyLinkedList::size()
 {
     int result = 0;
     ListElement * l = head->goToNext();
@@ -22,7 +22,7 @@ int singlyLinkedList::size()
     return result;
 }
 
-void singlyLinkedList::deleteListElement(int val)
+void SinglyLinkedList::deleteListElement(int val)
 {
     //std::cerr << val << std::endl;
     if(positionInList(val) == -1)
@@ -33,7 +33,7 @@ void singlyLinkedList::deleteListElement(int val)
     deleteOnPosition(positionInList(val));
 }
 
-void singlyLinkedList::insertToPosition(int pos, int val)
+void SinglyLinkedList::insertToPosition(int pos, int val)
 {
     if(findInList(val))
     {
@@ -52,7 +52,7 @@ void singlyLinkedList::insertToPosition(int pos, int val)
     currentElement->makeLink(temp);
 }
 
-void singlyLinkedList::deleteOnPosition(int pos)
+void SinglyLinkedList::deleteOnPosition(int pos)
 {
     ListElement * currentElement = head;
     for(int i = 0; i < pos; i++)
@@ -63,7 +63,7 @@ void singlyLinkedList::deleteOnPosition(int pos)
     delete temp;
 }
 
-void singlyLinkedList::deleteList()
+void SinglyLinkedList::deleteList()
 {
     int size = this->size();
 
@@ -75,7 +75,7 @@ void singlyLinkedList::deleteList()
     }
 }
 
-void singlyLinkedList::printList()
+void SinglyLinkedList::printList()
 {
     ListElement * currentElement = head->goToNext();
 
@@ -87,7 +87,7 @@ void singlyLinkedList::printList()
     printf("\n");
 }
 
-int singlyLinkedList::positionInList(int val)
+int SinglyLinkedList::positionInList(int val)
 {
     ListElement * currentElement = head->goToNext();
     int ans = 0;
@@ -103,7 +103,7 @@ int singlyLinkedList::positionInList(int val)
     return -1;
 }
 
-bool singlyLinkedList::findInList(int val)
+bool SinglyLinkedList::findInList(int val)
 {
     ListElement * currentElement = head->goToNext();
 

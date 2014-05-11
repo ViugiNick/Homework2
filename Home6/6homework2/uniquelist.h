@@ -1,7 +1,8 @@
 #include "singlylinkedlist.h"
 #include "uniquelisterrors.h"
 
-class UniqueList : public singlyLinkedList
+///Class, for working with list, with only one exemplar of each value
+class UniqueList : public SinglyLinkedList
 {
     public:
         ///Method, to add element in unique list

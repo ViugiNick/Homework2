@@ -2,10 +2,10 @@
 #include "listelement.h"
 #pragma once
 
-class singlyLinkedList : public List
+class SinglyLinkedList : public List
 {
     public:
-        ~singlyLinkedList();
+        ~SinglyLinkedList();
         int size();
         void insertToPosition(int pos, int val);
         void deleteOnPosition(int pos);
