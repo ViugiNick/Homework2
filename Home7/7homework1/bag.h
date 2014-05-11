@@ -2,7 +2,7 @@
 #include <QMap>
 #include <QMapIterator>
 #include <iostream>
-#include <set>
+#include <map>
 
 using namespace std;
 
@@ -12,39 +12,65 @@ class Bag
 {
 public:
     
-    Bag(){}
+    Bag();
+    ~Bag();
     ///Add element to our muliset
     void addElement(const T& element);
     ///Delete element from out muliset
     void deleteElement(const T& element);
+    ///Count size of bag
+    int getSize();
     bool find(const T& element);
     ///Count number 'element' in multiset
     int count(const T& element);
 private:
-    std::multiset <T> mainSet;
+    std::map <T, int> mainMap;
+    int sizeOfBag;
 };
+
+template <typename T>
+Bag<T>::Bag() : sizeOfBag(0)
+{
+    mainMap.clear();
+}
+
+template <typename T>
+Bag<T>::~Bag()
+{
+    mainMap.clear();
+}
 
 template <typename T>
 void Bag<T>::addElement(const T &val)
 {
-    mainSet.insert(val);
+    mainMap[val]++;
+    sizeOfBag++;
 }
 
 template <typename T>
 void Bag<T>::deleteElement(const T &val)
 {
-    if(mainSet.count(val) > 0)
-    mainSet.erase(lower_bound(mainSet.begin(), mainSet.end(), val));
+    if(mainMap.count(val) > 0)
+    {
+        mainMap[val]--;
+        sizeOfBag--;
+    }
 }
 
 template <typename T>
 bool Bag<T>::find(const T &val)
 {
-    return (mainSet.count(val) > 0);
+    return (mainMap[val] > 0);
 }
 
 template <typename T>
 int Bag<T>::count(const T &val)
 {
-    return mainSet.count(val);
+    return mainMap[val];
+}
+
+template <typename T>
+int Bag<T>::getSize()
+{
+    return sizeOfBag;
 }
