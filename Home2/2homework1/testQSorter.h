@@ -64,6 +64,6 @@ private slots:
 
            QVERIFY(isCorrect);
            delete[] mainArray;
-    	   delete[] ourArray;
+           delete[] ourArray;
     }
 };
