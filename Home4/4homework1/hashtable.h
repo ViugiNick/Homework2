@@ -14,7 +14,7 @@ class HashTable : public HashTableInterface
         double loadFactor();
         int numConflicts();
         int maxConflicts();
-        void changeHashFunction(char type);
+        void changeHashFunction(HashFunction * counter);
         int getHash(QString &inputString);
         void print();
         virtual int tableSize();

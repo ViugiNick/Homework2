@@ -77,10 +77,10 @@ int HashTable::maxConflicts()
     return ans;
 }
 
-void HashTable::changeHashFunction(char type)
+void HashTable::changeHashFunction(HashFunction * counter)
 {
     delete hashCounter;
-    hashCounter = new HashFunction(type, size);
+    hashCounter = counter;
 
     singlyLinkedList * newList = new singlyLinkedList[size];
     for (int i = 0; i < this->size; i++)
