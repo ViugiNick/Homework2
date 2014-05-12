@@ -5,7 +5,7 @@
 #include <QMap>
 #include <QPushButton>
 #include <map>
-//#include <pair>
+#include "tictactoe.h"
 
 namespace Ui {
 class Widget;
@@ -28,21 +28,12 @@ private:
        void clearButton(QPushButton *button);
        ///Makes a turm (set text on button)
        void openButton(QPushButton *button, char c);
-       ///Check, if player 'c' wins
-       bool win(char c);
        ///Show you message, that you wins
        void showMsgBox(const QString &text);
        Ui::Widget *ui;
        int oldSize;
-       ///Numbers of buttons in line, need to win
-       int param;
-       int size;
 
-       ///From button, gives  you x and y position of button
-       std::map <QPushButton *, std::pair<int, int>> field;
-       ///From x and y position gives you letter in this buttons
-       std::map <std::pair<int, int>, char> val;
-
+       TicTacToe game;
        enum State {
                none,
                one,
@@ -50,4 +41,11 @@ private:
        };
 
        State state;
+
+       ///From button, gives  you x and y position of button
+       std::map <QPushButton *, std::pair<int, int>> field;
+
+       ///Numbers of buttons in line, need to win
+       int param;
+       int size;
 };

@@ -6,6 +6,7 @@
 #include <time.h>
 #include "widget.h"
 #include "ui_widget.h"
+#include "tictactoe.h"
 #include <iostream>
 
 using namespace std;
@@ -44,7 +45,8 @@ GameWidget::~GameWidget()
 
 void GameWidget::generateButtons()
 {
-    val.clear();
+    game.clearMap();
+    //val.clear();
     field.clear();
     state = one;
 
@@ -83,15 +85,16 @@ void GameWidget::processButtonClick()
     {
         openButton(button, 'O');
         state = two;
-        if(win('O'))
+        if(game.win('O', size, param))
         {
             showMsgBox("!!!You win (O)!!!");
         }
-    } else if (state == two)
+    }
+    else if (state == two)
     {
         openButton(button, 'X');
         state = one;
-        if(win('X'))
+        if(game.win('X', size, param))
         {
             showMsgBox("!!!You win (X)!!!");
         }
@@ -106,13 +109,14 @@ void GameWidget::clearButton(QPushButton *button)
 void GameWidget::openButton(QPushButton *button, char c)
 {
         button->setEnabled(false);
-        val[field[button]] = c;
+        game.open(field[button].first, field[button].second, c);
+
         if(c == 'X')
             button->setText("X");
         else
             button->setText("O");
 }
-
+/*
 bool GameWidget::win(char c)
 {
     cerr << "CHECK" << c << endl;
@@ -134,7 +138,7 @@ bool GameWidget::win(char c)
         cerr << endl;
     }
     cerr << "!!!" << endl;
-    */
+
     for(int i = 0; i < size; i++)
     {
         for(int j = 0; j + param <= size; j++)
@@ -202,3 +206,4 @@ bool GameWidget::win(char c)
     }
     return false;
 }
+*/
