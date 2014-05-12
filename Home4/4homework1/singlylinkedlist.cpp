@@ -1,4 +1,4 @@
-#include "singlyLinkedList.h"
+#include "singlylinkedlist.h"
 #include <QString>
 #include <iostream>
 

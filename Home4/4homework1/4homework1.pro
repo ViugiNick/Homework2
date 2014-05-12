@@ -28,5 +28,5 @@ HEADERS += \
     hashtable.h \
     singlylinkedlist.h \
     countinghash.h \
-    hashTableInterface.h \
-    testHashTable.h
+    testHashTable.h \
+    hashtableinterface.h

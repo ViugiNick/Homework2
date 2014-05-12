@@ -1,8 +1,8 @@
 #include "countinghash.h"
 #include <iostream>
-#include "singlyLinkedList.h"
+#include "singlylinkedlist.h"
 #include "hashtable.h"
-#include "hashTableInterface.h"
+#include "hashtableinterface.h"
 #include <algorithm>
 
 HashTable::HashTable(char type, int size)
