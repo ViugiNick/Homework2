@@ -2,9 +2,10 @@
 #include <QMap>
 #include <QMapIterator>
 #include <iostream>
-#include <map>
+#include "bagerrors.h"
 
 using namespace std;
+using namespace BagErrors;
 
 template <typename T>
 ///Class, based on multiset
@@ -24,7 +25,7 @@ public:
     ///Count number 'element' in multiset
     int count(const T& element);
 private:
-    std::map <T, int> mainMap;
+    QMap <T, int> mainMap;
     int sizeOfBag;
 };
 
@@ -43,30 +44,44 @@ Bag<T>::~Bag()
 template <typename T>
 void Bag<T>::addElement(const T &val)
 {
-    mainMap[val]++;
+    if(mainMap.contains(val))
+        mainMap[val]++;
+    else
+        mainMap.insert(val, 1);
+
     sizeOfBag++;
 }
 
 template <typename T>
 void Bag<T>::deleteElement(const T &val)
 {
-    if(mainMap.count(val) > 0)
+    if(find(val))
     {
-        mainMap[val]--;
+        if(mainMap[val] == 1)
+            mainMap.remove(val);
+        else
+            mainMap[val]--;
+
         sizeOfBag--;
+    }
+    else
+    {
+        BagErrors::NoSuchVal error;
+        throw error;
     }
 }
 
 template <typename T>
 bool Bag<T>::find(const T &val)
 {
-    return (mainMap[val] > 0);
+    return (mainMap.contains(val));
 }
 
 template <typename T>
 int Bag<T>::count(const T &val)
 {
-    return mainMap[val];
+    if(mainMap.contains(val))
+        return mainMap[val];
 }
 
 template <typename T>

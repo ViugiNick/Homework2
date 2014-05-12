@@ -19,4 +19,5 @@ SOURCES += main.cpp
 
 HEADERS += \
     bag.h \
-    testbag.h
+    testbag.h \
+    bagerrors.h

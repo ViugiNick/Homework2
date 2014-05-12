@@ -3,6 +3,9 @@
 #include <QObject>
 #include <QtTest/QTest>
 #include "bag.h"
+#include "bagerrors.h"
+
+using namespace BagErrors;
 
 class TestBag: public QObject
 {
@@ -43,6 +46,23 @@ private slots:
         main->deleteElement(int(1e9));
         QVERIFY(main->count(int(1e9)) == 1);
     }
+
+    void testDoubleDeleting()
+    {
+        main->addElement(int(1e9));
+        main->deleteElement(int(1e9));
+
+        try
+        {
+            main->deleteElement(int(1e9));
+        }
+        catch(NoSuchVal)
+        {
+            std::cerr << "No such val!!!" << std::endl;
+        }
+        QVERIFY(main->count(int(1e9)) == 0);
+    }
+
     void cleanup()
     {
         delete main;
