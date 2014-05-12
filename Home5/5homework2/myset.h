@@ -11,13 +11,13 @@ class MySet
         ///Method to return QList, on which based MySet
 	QList<T> mySetToQList() const;
         ///Method to add value to MySet
-	void add(T &val);
+    void add(const T &val);
         ///Method, which return size of MySet
 	int sizeOfSet() const;
         ///Method, which sh
-	bool find(T &val) const;
+    bool find(const T &val) const;
         ///Method to delete element from set
-	void deleteFromSet(T &val);
+    void deleteFromSet(const T &val);
         ///Method, which intersect two sets, and this<-result
 	void intersectSet(const MySet<T> &firstSet, const MySet<T> &secondSet);
         ///Method, which union two sets, and this<-result
@@ -35,7 +35,7 @@ QList<T> MySet<T>::mySetToQList() const
 }
 
 template<typename T>
-bool MySet <T>::find(T &val) const
+bool MySet <T>::find(const T &val) const
 {
     return(mainList.count(val) > 0);
 }
@@ -48,21 +48,20 @@ int MySet <T>::sizeOfSet() const
 
 
 template<typename T>
-void MySet <T>::add(T &val)
+void MySet <T>::add(const T &val)
 {
     if (!find(val))
             mainList.append(val);
 }
 
 template<typename T>
-void MySet <T>::deleteFromSet(T &val)
+void MySet <T>::deleteFromSet(const T &val)
 {
     if (find(val))
         mainList.removeOne(val);
     else
     {
-        SetErrors::NoSuchVal error;
-        throw error;
+        throw SetErrors::NoSuchVal();
     }
 }
 

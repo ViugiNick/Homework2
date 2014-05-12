@@ -1,7 +1,6 @@
 #pragma once
 
-class SetErrors
+namespace SetErrors
 {
-    public:
-        class NoSuchVal{};
+    class NoSuchVal{};
 };

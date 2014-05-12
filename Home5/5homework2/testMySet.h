@@ -16,32 +16,37 @@ class TestMySet: public QObject
     private slots:
         void testAdding()
         {
-            main.add(int(1e9));
+            int tmpVal = (int)1e9;
+            main.add(tmpVal);
             QVERIFY(main.sizeOfSet() == 1);
-            QVERIFY(main.find(int(1e9)));
+            QVERIFY(main.find(tmpVal));
             main.clearSet();
         }
 
         void testBadDeleting()
         {
-            main.add(1);
+            int tmpVal = 1;
+            int tmpVal2 = 2;
+
+            main.add(tmpVal);
             try
             {
-                main.deleteFromSet(2);
+                main.deleteFromSet(tmpVal2);
             }
             catch(SetErrors::NoSuchVal &)
             {
                 std::cout << "!!!No such value!!!" << std::endl;
             }
-            main.deleteFromSet(1);
+            main.deleteFromSet(tmpVal);
             QVERIFY(main.sizeOfSet() == 0);
             main.clearSet();
         }
 
         void testDeleting()
         {
-            main.add(1);
-            main.deleteFromSet(1);
+            int tmpVal = 1;
+            main.add(tmpVal);
+            main.deleteFromSet(tmpVal);
             QVERIFY(main.sizeOfSet() == 0);
         }
 
@@ -50,18 +55,22 @@ class TestMySet: public QObject
             MySet <int> tmp1;
             MySet <int> tmp2;
 
-            tmp1.add(1);
-            tmp1.add(2);
+            int val1 = 1;
+            int val2 = 2;
+            int val3 = 3;
 
-            tmp2.add(2);
-            tmp2.add(3);
+            tmp1.add(val1);
+            tmp1.add(val2);
+
+            tmp2.add(val2);
+            tmp2.add(val3);
 
             main.intersectSet(tmp1, tmp2);
 
             std::cerr << main.sizeOfSet() << std::endl;
 
             QVERIFY(main.sizeOfSet() == 1);
-            QVERIFY(main.find(2));
+            QVERIFY(main.find(val2));
             main.clearSet();
         }
 
@@ -70,18 +79,22 @@ class TestMySet: public QObject
             MySet <int> tmp1;
             MySet <int> tmp2;
 
-            tmp1.add(1);
-            tmp1.add(2);
+            int val1 = 1;
+            int val2 = 2;
+            int val3 = 3;
 
-            tmp2.add(2);
-            tmp2.add(3);
+            tmp1.add(val1);
+            tmp1.add(val2);
+
+            tmp2.add(val2);
+            tmp2.add(val3);
 
             main.unionSet(tmp1, tmp2);
 
             QVERIFY(main.sizeOfSet() == 3);
-            QVERIFY(main.find(1));
-            QVERIFY(main.find(2));
-            QVERIFY(main.find(3));
+            QVERIFY(main.find(val1));
+            QVERIFY(main.find(val2));
+            QVERIFY(main.find(val3));
             main.clearSet();
         }
 
