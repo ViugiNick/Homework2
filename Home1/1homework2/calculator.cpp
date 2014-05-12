@@ -112,7 +112,7 @@ int calculate(const char *inputString)
     //------------------------------
 
         delete stack1;
-        arrayStack *stack4 = new arrayStack();
+        ArrayStack *stack4 = new ArrayStack();
 
         while (stack3->size() > 0)
         {
