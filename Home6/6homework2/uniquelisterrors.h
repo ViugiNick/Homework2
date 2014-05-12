@@ -7,4 +7,4 @@ namespace UniqueListErrors
     class FindEqualVal{};
     ///Error, whent you whant to delete val, which is not exists in list
     class NoSuchVal{};
-};
+}
