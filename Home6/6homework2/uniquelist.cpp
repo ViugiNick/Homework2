@@ -3,27 +3,26 @@
 #include "uniquelist.h"
 #include <iostream>
 
-void UniqueList::addElement(int pos, int val) throw (UniqueListErrors::FindEqualVal)
+using namespace UniqueListErrors;
+
+void UniqueList::addElement(int pos, int val) throw (FindEqualVal)
 {
-    try
+    if(findInList(val))
     {
-        insertToPosition(pos, val);
+        FindEqualVal error;
+        throw error;
+        return;
     }
-    catch(UniqueListErrors::FindEqualVal &)
-    {
-        std::cout << "!!!Value already exists!!!" << std::endl;
-    }
+    insertToPosition(pos, val);
 }
 
-void UniqueList::deleteElement(int val) throw (UniqueListErrors::NoSuchVal)
+void UniqueList::deleteElement(int val) throw (NoSuchVal)
 {
-    //std::cerr << "!!!" << val << std::endl;
-    try
+    if(SinglyLinkedList::positionInList(val) == -1)
     {
-        deleteListElement(val);
+        NoSuchVal error;
+        throw error;
+        return;
     }
-    catch(UniqueListErrors::NoSuchVal &)
-    {
-        std::cout << "!!!No such value!!!" << std::endl;
-    }
+    deleteListElement(val);
 };

@@ -25,21 +25,21 @@ int SinglyLinkedList::size()
 void SinglyLinkedList::deleteListElement(int val)
 {
     //std::cerr << val << std::endl;
-    if(positionInList(val) == -1)
-    {
-        UniqueListErrors::NoSuchVal error;
-        throw error;
-    }
+    //if(positionInList(val) == -1)
+    //{
+    //    UniqueListErrors::NoSuchVal error;
+    //    throw error;
+    //}
     deleteOnPosition(positionInList(val));
 }
 
 void SinglyLinkedList::insertToPosition(int pos, int val)
 {
-    if(findInList(val))
-    {
-        UniqueListErrors::FindEqualVal error;
-        throw error;
-    }
+    //if(findInList(val))
+    //{
+    //    UniqueListErrors::FindEqualVal error;
+    //    throw error;
+    //}
 
     ListElement * currentElement = head;
 

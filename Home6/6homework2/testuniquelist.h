@@ -6,6 +6,8 @@
 #include "singlylinkedlist.h"
 #include <iostream>
 
+using namespace UniqueListErrors;
+
 class TestUniqueList: public QObject
 {
     Q_OBJECT
@@ -26,8 +28,14 @@ class TestUniqueList: public QObject
         void testAdding()
         {
             main->addElement(0, int(1e9));
-            main->addElement(0, int(1e9));
-
+            try
+            {
+                main->addElement(0, int(1e9));
+            }
+            catch(FindEqualVal &)
+            {
+                std::cerr << "Secondary adding" << std::endl;
+            }
             QVERIFY(main->size() == 1);
         }
 
@@ -43,7 +51,15 @@ class TestUniqueList: public QObject
             main->addElement(0, int(1e9));
             //std::cerr << "!";
             main->deleteElement(int(1e9));
-            main->deleteElement(int(1e9));
+
+            try
+            {
+                main->deleteElement(int(1e9));
+            }
+            catch(NoSuchVal &)
+            {
+                std::cerr << "No such value" << std::endl;
+            }
             QVERIFY(main->size() == 0);
         }
     private:
