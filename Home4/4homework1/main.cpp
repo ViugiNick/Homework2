@@ -5,7 +5,7 @@
 #include "hashtable.h"
 #include "countinghash.h"
 #include "testHashTable.h"
-\
+
 using namespace std;
 
 int main()
