@@ -1,5 +1,5 @@
 #pragma once
-#include "hashtableInterface.h"
+#include "hashTableInterface.h"
 #include "singlylinkedlist.h"
 
 class HashTable : public HashTableInterface

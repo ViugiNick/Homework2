@@ -2,7 +2,7 @@
 #include <iostream>
 #include "singlylinkedlist.h"
 #include "hashtable.h"
-#include "hashtableInterface.h"
+#include "hashTableInterface.h"
 #include <algorithm>
 
 HashTable::HashTable(char type, int size)

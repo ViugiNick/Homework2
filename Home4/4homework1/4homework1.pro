@@ -29,4 +29,4 @@ HEADERS += \
     singlylinkedlist.h \
     countinghash.h \
     testHashTable.h \
-    hashtableInterface.h
+    hashTableInterface.h
