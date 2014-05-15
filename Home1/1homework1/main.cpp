@@ -1,8 +1,8 @@
 #include <QCoreApplication>
 #include "singlylinkedlist.h"
 #include "doublylinkedlist.h"
-#include "testdoubly.h"
-#include "testsingly.h"
+#include "testDoubly.h"
+#include "testSingly.h"
 #include <iostream>
 
 using namespace std;
