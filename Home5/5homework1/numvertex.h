@@ -16,6 +16,14 @@ class NumVertex : public TreeNode
 
         std::string strtoint(int input)
         {
+            bool flag = false;
+
+            if(input < 0)
+            {
+                flag = true;
+                input *= -1;
+            }
+
             std::string tmp;
 
             while(input > 0)
@@ -23,6 +31,10 @@ class NumVertex : public TreeNode
                 tmp = char(input + '0') + tmp;
                 input /= 10;
             }
+
+            if(flag)
+                tmp = '-' + tmp;
+
             return tmp;
         }
 

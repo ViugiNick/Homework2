@@ -40,4 +40,17 @@ class TestTree: public QObject
             QCOMPARE(tree.calculateTree(), 4);
             QCOMPARE(tree.printTree(), std::string("((1 + 1) * 2)"));
         }
+        void hardTest()
+        {
+            Tree tree("(* (+ (- 1 2) 3) (+ 1 (- 1 9)))");
+            QCOMPARE(tree.calculateTree(), -14);
+            QCOMPARE(tree.printTree(), std::string("(((1 - 2) + 3) * (1 + (1 - 9)))"));
+        }
+
+        void testNegativeNumbers()
+        {
+            Tree tree("(- -2 5)");
+            QCOMPARE(tree.calculateTree(), -7);
+            QCOMPARE(tree.printTree(), std::string("(-2 - 5)"));
+        }
 };
