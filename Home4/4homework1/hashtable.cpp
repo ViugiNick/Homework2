@@ -1,15 +1,19 @@
 #include "countinghash.h"
 #include <iostream>
 #include "singlylinkedlist.h"
+#include "tablerror.h"
 #include "hashtable.h"
 #include "hashTableInterface.h"
 #include <algorithm>
+#include <string>
+
+using namespace std;
 
 HashTable::HashTable(char type, int size)
 {
     this->size = size;
     hashCounter = new HashFunction(type, size);
-    hashList = new singlyLinkedList[size];
+    hashList = new SinglyLinkedList[size];
 }
 
 HashTable::~HashTable()
@@ -18,29 +22,41 @@ HashTable::~HashTable()
     delete hashCounter;
 }
 
-void HashTable::add(QString &inputString)
+void HashTable::add(const QString &inputString)
 {
+    if(find(inputString))
+    {
+        TableErrors::FindEqualVal error;
+        throw error;
+        return;
+    }
+
     int newHash = hashCounter->hash(inputString);
-    std::cerr << "Count hash1 : " << newHash << std::endl;
+    //std::cerr << "Count hash1 : " << newHash << std::endl;
     hashList[newHash].insertToPosition(0, inputString);
 }
 
-void HashTable::del(QString &inputString)
+void HashTable::del(const QString &inputString)
 {
     int tmp = hashCounter->hash(inputString);
-    std::cerr << "Count hash2 : " << tmp << std::endl;
+    //std::cerr << "Count hash2 : " << tmp << std::endl;
     int pos = hashList[tmp].positionInList(inputString);
-    std::cerr <<  "ListBefore :";
+    //std::cerr <<  "ListBefore :";
     hashList[tmp].printList();
-    std::cerr << "!!!" << " " << pos << std::endl;
+    //std::cerr << "!!!" << " " << pos << std::endl;
 
     if (pos != -1)
         hashList[tmp].deleteOnPosition(pos);
-    std::cerr <<  "ListAfter :";
+    else
+    {
+        TableErrors::NoSuchVal error;
+        throw error;
+    }
+    //std::cerr <<  "ListAfter :";
     hashList[tmp].printList();
 }
 
-bool HashTable::find(QString &inputString)
+bool HashTable::find(const QString &inputString)
 {
     int tmp = hashCounter->hash(inputString);
     return (hashList[tmp].findInList(inputString));
@@ -82,7 +98,7 @@ void HashTable::changeHashFunction(HashFunction * counter)
     delete hashCounter;
     hashCounter = counter;
 
-    singlyLinkedList * newList = new singlyLinkedList[size];
+    SinglyLinkedList * newList = new SinglyLinkedList[size];
     for (int i = 0; i < this->size; i++)
     {
         ListElement * tmp = hashList[i].getHead();
@@ -97,20 +113,39 @@ void HashTable::changeHashFunction(HashFunction * counter)
     hashList = newList;
 }
 
-int HashTable::getHash(QString &inputString)
+int HashTable::getHash(const QString &inputString)
 {
     return hashCounter->hash(inputString);
 }
 
-void HashTable::print()
+string intToStr(int x)
 {
-    for (int i = 0; i < size; ++i)
+    string result = "";
+    while(x > 0)
+    {
+        result = char('0' + (x % 10)) + result;
+        x /= 10;
+    }
+    return result;
+}
+
+string HashTable::print()
+{
+    string result = "";
+
+    for (int i = 0; i < size; i++)
+    {
         if (hashList[i].size() != 0)
         {
-            printf("%d > ", i);
-            hashList[i].printList();
-            printf("\n");
+            result += intToStr(i);
+            result += " > ";
+            result += hashList[i].printList();
+            result += " ";
+
+            //std::cerr << i << " " << result << std::endl;
         }
+    }
+    return result;
 }
 int HashTable::tableSize()
 {

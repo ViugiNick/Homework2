@@ -2,13 +2,13 @@
 #include <QString>
 #include <iostream>
 
-singlyLinkedList::~singlyLinkedList()
+SinglyLinkedList::~SinglyLinkedList()
 {
     deleteList();
     delete head;
 }
 
-int singlyLinkedList::size()
+int SinglyLinkedList::size()
 {
     int result = 0;
     ListElement * l = head->goToNext();
@@ -22,7 +22,7 @@ int singlyLinkedList::size()
     return result;
 }
 
-void singlyLinkedList::insertToPosition(int pos, QString &val)
+void SinglyLinkedList::insertToPosition(int pos, const QString &val)
 {
     ListElement * currentElement = head;
 
@@ -35,7 +35,7 @@ void singlyLinkedList::insertToPosition(int pos, QString &val)
     currentElement->makeLink(temp);
 }
 
-void singlyLinkedList::deleteOnPosition(int pos)
+void SinglyLinkedList::deleteOnPosition(int pos)
 {
     //std::cerr << pos << std::endl;
 
@@ -53,7 +53,7 @@ void singlyLinkedList::deleteOnPosition(int pos)
     delete temp;
 }
 
-void singlyLinkedList::deleteList()
+void SinglyLinkedList::deleteList()
 {
     int size = this->size();
 
@@ -65,19 +65,21 @@ void singlyLinkedList::deleteList()
     }
 }
 
-void singlyLinkedList::printList()
+std::string SinglyLinkedList::printList()
 {
     ListElement * currentElement = head->goToNext();
 
+    std::string result = "";
+
     while(currentElement != NULL)
     {
-        currentElement->printElement();
+        result += currentElement->printElement();
         currentElement = currentElement->goToNext();
     }
-    printf("\n");
+    return result;
 }
 
-bool singlyLinkedList::findInList(QString &val)
+bool SinglyLinkedList::findInList(const QString &val)
 {
     ListElement * currentElement = head->goToNext();
 
@@ -90,7 +92,7 @@ bool singlyLinkedList::findInList(QString &val)
     }
     return false;
 }
-int singlyLinkedList::positionInList(QString &val)
+int SinglyLinkedList::positionInList(const QString &val)
 {
     ListElement * currentElement = head->goToNext();
     int ans = 0;
@@ -106,7 +108,7 @@ int singlyLinkedList::positionInList(QString &val)
     return -1;
 }
 
-ListElement *singlyLinkedList::getHead()
+ListElement *SinglyLinkedList::getHead()
 {
     return head;
 }

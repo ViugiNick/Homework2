@@ -3,7 +3,9 @@
 #include <QObject>
 #include <QtTest/QTest>
 #include "hashtable.h"
+#include "tablerror.h"
 #include <iostream>
+#include <countinghash.h>
 
 class TestHashTable: public QObject
 {
@@ -19,10 +21,24 @@ class TestHashTable: public QObject
             main = new HashTable('*', sizeOfTable);
         }
 
+        void cleanup()
+        {
+            delete main;
+        }
+
         void testAdding()
         {
             QString tmp = "abacaba";
             main->add(tmp);
+
+            try
+            {
+                main->add(tmp);
+            }
+            catch(TableErrors::FindEqualVal)
+            {
+                std::cout << "!!!This value is already in hash table!!!" << std::endl;
+            }
 
             QVERIFY(main->find(tmp));
         }
@@ -30,15 +46,33 @@ class TestHashTable: public QObject
         void testDeleting()
         {
             QString tmp = "abacaba";
-            //std::cerr << "!" << std::endl;
             main->add(tmp);
-            main->print();
-            //std::cerr << "!" << std::endl;
+            QVERIFY(main->print() == "99 > abacaba ");
             main->del(tmp);
-            main->print();
-            //std::cerr << "!" << std::endl;
+            try
+            {
+                main->del(tmp);
+            }
+            catch(TableErrors::NoSuchVal)
+            {
+                std::cout << "!!!No such value in hash table!!!" << std::endl;
+            }
             QVERIFY(!main->find(tmp));
-            //std::cerr << "!" << std::endl;
+        }
+        void testChangingHash()
+        {
+            QString tmp = "abacaba";
+            main->add(tmp);
+            QVERIFY(main->print() == "99 > abacaba ");
+            int countHash1 = main->getHash(tmp);
+
+            HashFunction *newFunction = new HashFunction('+', 100);
+
+            main->changeHashFunction(newFunction);
+            QVERIFY(main->print() == "83 > abacaba ");
+            int countHash2 = main->getHash(tmp);
+
+            QVERIFY(countHash1 != countHash2);
         }
     private:
         HashTable * main;

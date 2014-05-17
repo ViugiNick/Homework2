@@ -1,20 +1,22 @@
 #include <cstdio>
 #include <QString>
+#include <string>
+
 #pragma once
 
 class ListElement
 {
     public:
-        ListElement(QString val);
+        ListElement(const QString val);
         ListElement();
         QString &value();
-        void makeValue(QString &val);
+        void makeValue(const QString &val);
 
         void makeLink(ListElement * l);
         void makePrev(ListElement * l);
 
         ListElement * goToNext();
-        void printElement();
+        std::string printElement();
 
     private:
         QString val;

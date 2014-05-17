@@ -1,8 +1,9 @@
 #include "listelement.h"
 #include <iostream>
 #include <QString>
+#include <string>
 
-ListElement::ListElement(QString val)
+ListElement::ListElement(const QString val)
 {
     makeValue(val);
 }
@@ -18,7 +19,7 @@ QString &ListElement::value()
     return val;
 }
 
-void ListElement::makeValue(QString &val)
+void ListElement::makeValue(const QString &val)
 {
     this->val = val;
 }
@@ -38,7 +39,7 @@ ListElement * ListElement::goToNext()
     return next;
 }
 
-void ListElement::printElement()
+std::string ListElement::printElement()
 {
-    std::cout << val.toStdString();
+    return val.toStdString();
 }
