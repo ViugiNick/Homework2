@@ -5,7 +5,11 @@ class TreeNode
 {
     public:
         TreeNode() {}
-        virtual ~TreeNode() {}
+        virtual ~TreeNode()
+        {
+            delete left;
+            delete right;
+        }
         ///Calculate value of tree
         virtual int calculate() = 0;
         ///Print tree in std::string answer
