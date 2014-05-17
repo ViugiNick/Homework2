@@ -40,7 +40,6 @@ int main()
     temp2->printList();
     cout << temp2->findInList(3) << endl;
     cout << temp2->findInList(1) << endl;
-    delete temp1;
     delete temp2;
 
     return 0;
