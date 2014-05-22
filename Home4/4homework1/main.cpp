@@ -7,7 +7,7 @@
 #include "testHashTable.h"
 
 using namespace std;
-\
+
 int main()
 {
     TestHashTable hashTableTester;

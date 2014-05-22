@@ -1,6 +1,5 @@
 #pragma once
 #include <QString>
-#include <string>
 #include "countinghash.h"
 
 class HashTableInterface
@@ -14,5 +13,5 @@ class HashTableInterface
         virtual double loadFactor() = 0;
         virtual int numConflicts() = 0;
         virtual int maxConflicts() = 0;
-        virtual std::string print() = 0;
+        virtual QString print() = 0;
 };

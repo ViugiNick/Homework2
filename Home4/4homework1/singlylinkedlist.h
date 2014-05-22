@@ -11,7 +11,7 @@ class SinglyLinkedList : public List
         void insertToPosition(int pos, const QString &val);
         void deleteOnPosition(int pos);
         void deleteList();
-        std::string printList();
+        QString printList();
         bool findInList(const QString &val);
         int positionInList(const QString &val);
         ListElement * getHead();

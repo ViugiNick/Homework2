@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <QString>
-#include <string>
 
 #pragma once
 
@@ -16,7 +15,7 @@ class ListElement
         void makePrev(ListElement * l);
 
         ListElement * goToNext();
-        std::string printElement();
+        QString printElement();
 
     private:
         QString val;

@@ -2,7 +2,7 @@
 #include "hashTableInterface.h"
 #include "singlylinkedlist.h"
 #include "tablerror.h"
-#include <string>
+#include <QString>
 
 class HashTable : public HashTableInterface
 {
@@ -18,7 +18,7 @@ class HashTable : public HashTableInterface
         int maxConflicts();
         void changeHashFunction(HashFunction * counter);
         int getHash(const QString &inputString);
-        std::string print();
+        QString print();
         virtual int tableSize();
 
     private:

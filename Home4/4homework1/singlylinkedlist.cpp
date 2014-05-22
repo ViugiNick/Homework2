@@ -65,15 +65,16 @@ void SinglyLinkedList::deleteList()
     }
 }
 
-std::string SinglyLinkedList::printList()
+QString SinglyLinkedList::printList()
 {
     ListElement * currentElement = head->goToNext();
 
-    std::string result = "";
+    QString result = "";
 
     while(currentElement != NULL)
     {
         result += currentElement->printElement();
+        result += " ";
         currentElement = currentElement->goToNext();
     }
     return result;

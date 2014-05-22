@@ -63,6 +63,7 @@ class TestHashTable: public QObject
         {
             QString tmp = "abacaba";
             main->add(tmp);
+            //std::cerr << "!" << main->print().toStdString() << "!" << std::endl;
             QVERIFY(main->print() == "99 > abacaba ");
             int countHash1 = main->getHash(tmp);
 

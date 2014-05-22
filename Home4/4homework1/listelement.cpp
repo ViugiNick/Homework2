@@ -39,7 +39,7 @@ ListElement * ListElement::goToNext()
     return next;
 }
 
-std::string ListElement::printElement()
+QString ListElement::printElement()
 {
-    return val.toStdString();
+    return val;
 }

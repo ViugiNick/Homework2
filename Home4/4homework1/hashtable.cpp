@@ -28,7 +28,6 @@ void HashTable::add(const QString &inputString)
     {
         TableErrors::FindEqualVal error;
         throw error;
-        return;
     }
 
     int newHash = hashCounter->hash(inputString);
@@ -118,9 +117,9 @@ int HashTable::getHash(const QString &inputString)
     return hashCounter->hash(inputString);
 }
 
-string intToStr(int x)
+QString intToStr(int x)
 {
-    string result = "";
+    QString result = "";
     while(x > 0)
     {
         result = char('0' + (x % 10)) + result;
@@ -129,9 +128,9 @@ string intToStr(int x)
     return result;
 }
 
-string HashTable::print()
+QString HashTable::print()
 {
-    string result = "";
+    QString result = "";
 
     for (int i = 0; i < size; i++)
     {
@@ -140,7 +139,6 @@ string HashTable::print()
             result += intToStr(i);
             result += " > ";
             result += hashList[i].printList();
-            result += " ";
 
             //std::cerr << i << " " << result << std::endl;
         }
