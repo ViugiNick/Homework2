@@ -1,34 +1,39 @@
 #include <iostream>
+#include <QList>
 
 #include "hasher.h"
+#include "hashFunction.h"
 
+using namespace std;
 
-Hasher::Hasher():
-	hashSize(101),
-	numOfRecords(0),
+Hasher::Hasher(int size):
+    numOfRecords(0),
 	numOfCollisions(0),
-	hashType(byMod),
+    type(byMod)
 {
+    this->hashSize = size;
+    function = new HashFunction(size);
+    hashTable = new QList<int>[size];
 }
 
 int Hasher::calcHash(int value)
 {
-	switch (hashType)
+    switch (type)
 	{
-	case (byMod):
-	{
-		return (function->hashByModSize(value));
-	}
-	case (byFam):
-	{
-		return (function->hashByFunctionFamily(value));
-	}
-	case (bySum):
-	{
-		return (function->hashByNumSum(value));
-	}
-	default:
-		return -1;
+        case (byMod):
+        {
+            return (function->hashByModSize(value));
+        }
+        case (byFam):
+        {
+            return (function->hashByFunctionFamily(value));
+        }
+        case (bySum):
+        {
+            return (function->hashByNumSum(value));
+        }
+        default:
+            return -1;
 	}
 }
 
@@ -48,7 +53,7 @@ void Hasher::removeFromHash(int value)
 
 bool Hasher::isContained(int value)
 {
-	return (hashTable[calcHash(value)].contains(value));
+    return (hashTable[calcHash(value)].contains(value));
 }
 
 int Hasher::findMaxCollision()
@@ -68,23 +73,23 @@ void Hasher::printStatistic()
 {
 	std::cout << "Statistic of hash table:\n"
 				 " Type of hash-function - ";
-	switch (hashType)
+    switch (type)
 	{
-	case (byMod):
-	{
-		std::cout << "by mod of " << hashSize << std::endl;
-		break;
-	}
-	case (byFam):
-	{
-		std::cout << "'37 * value + 41' by mod of " << hashSize << std::endl;
-		break;
-	}
-	case (bySum):
-	{
-		std::cout << "by sum of the digits by mod of " << hashSize << std::endl;
-		break;
-	}
+        case (byMod):
+        {
+            std::cout << "by mod of " << hashSize << std::endl;
+            break;
+        }
+        case (byFam):
+        {
+            std::cout << "'37 * value + 41' by mod of " << hashSize << std::endl;
+            break;
+        }
+        case (bySum):
+        {
+            std::cout << "by sum of the digits by mod of " << hashSize << std::endl;
+            break;
+        }
 	}
 	std::cout << " Size of hash table - " << hashSize << std::endl;
 	std::cout << " Num of records - " << numOfRecords << std::endl;
@@ -93,9 +98,9 @@ void Hasher::printStatistic()
 	std::cout << " Load factor - " << (1.0 * numOfRecords / hashSize) << std::endl;
 }
 
-void Hasher::rehash(hashType type)
+void Hasher::rehash(hashType val)
 {
-	changeHash(type);
+    changeHash(val);
 
 	numOfRecords = 0;
 	numOfCollisions = 0;
@@ -107,7 +112,7 @@ void Hasher::rehash(hashType type)
 		hashTable[i].clear();
 	}
 
-	for (int i = 0; i < hashSize + 1; i++)
+    for (int i = 0; i < hashSize; i++)
 		while (!tempTable[i].isEmpty())
 		{
 			addToHash(tempTable[i].first());
@@ -117,18 +122,24 @@ void Hasher::rehash(hashType type)
 	delete tempTable;
 }
 
-void Hasher::changeHash(hashType type)
+void Hasher::changeHash(hashType val)
 {
-	hashType = type;
+    type = val;
 }
 
 void Hasher::addToHash(int value)
 {
-	if (isContained(value))
-		return;
+    //std::cerr << "New" << value << std::endl;
+    if (isContained(value))
+    {
+        //cerr << "?" << endl;
+        return;
+    }
+    //std::cerr << "Done" << std::endl;
 
 	int hashValue = calcHash(value);
-	hashTable[hashValue] << value;
+    //std::cerr << "New" << hashValue << std::endl;
+    hashTable[hashValue] << value;
 
 	numOfRecords++;
 

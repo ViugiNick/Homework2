@@ -17,10 +17,10 @@
 int main()
 {
 
-HasherTest test1;
-QTest::qExec(&test1);
-HashFunctionTest test2;
-QTest::qExec(&test2);
+    HasherTest test1;
+    QTest::qExec(&test1);
+    HashFunctionTest test2;
+    QTest::qExec(&test2);
 
     work();
 

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QtTest/QtTest>
+#include <iostream>
 #include "hasher.h"
 
 class HasherTest : public QObject
@@ -15,7 +16,7 @@ public:
 private slots:
     void init()
     {
-        hash = new Hasher;
+        hash = new Hasher(101);
     }
 
     void testCalcHash()
@@ -70,8 +71,10 @@ private slots:
     {
         for (int i = 0; i < 20; i++)
             hash->addToHash(rand() % 20);
+
         hash->addToHash(99);
         hash->rehash(bySum);
+
         QVERIFY(hash->isContained(99));
         QVERIFY(hash->calcHash(99) == 18);
     }

@@ -14,10 +14,12 @@
 * The main class of program, in that implements an interface to work with hash tables.
 */
 
+const int maxTableSize = 1000;
+
 class Hasher
 {
 public:
-	Hasher();
+    Hasher(int size);
 
 	bool isContained(int value);
 	void addToHash(int value);
@@ -35,15 +37,15 @@ public:
 	void printStatistic();
 
 	/// Array of objects of List class.
-	int const hashSize;
-	QList<int> *hashTable;
+    int hashSize;
+    QList<int> *hashTable;
 
 	/// Statistics about hash table.
 	int numOfRecords;
 	int numOfCollisions;
 
 	/// Hash function type.
-	hashType hashType;
+    hashType type;
 	HashFunction *function;
 };
 

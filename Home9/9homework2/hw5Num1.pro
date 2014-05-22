@@ -10,8 +10,8 @@ QT += core \
 QT -= gui
 
 TARGET = hash
-CONFIG += console
 CONFIG -= app_bundle
+CONFIG += console
 
 TEMPLATE = app
 

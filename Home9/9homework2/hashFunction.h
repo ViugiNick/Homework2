@@ -10,7 +10,8 @@
 */
 
 
-enum hashType {
+enum hashType
+{
     byMod = 0,
     byFam,
     bySum
@@ -18,17 +19,14 @@ enum hashType {
 
 class HashFunction
 {
-public:
-    HashFunction(int size):
-        hashSize(size)
-    {}
+    public:
+        HashFunction(int size);
+        int hashByModSize(int value);
+        int hashByFunctionFamily(int value);
+        int hashByNumSum(int value);
 
-    int hashByModSize(int value);
-    int hashByFunctionFamily(int value);
-    int hashByNumSum(int value);
-
-private:
-    int const hashSize;
+    private:
+        int hashSize;
 };
 
 #endif // HASHFUNCTION_H
