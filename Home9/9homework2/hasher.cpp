@@ -16,6 +16,12 @@ Hasher::Hasher(int size):
     hashTable = new QList<int>[size];
 }
 
+Hasher::~Hasher()
+{
+    delete[] hashTable;
+    delete function;
+}
+
 int Hasher::calcHash(int value)
 {
     switch (type)
@@ -119,7 +125,7 @@ void Hasher::rehash(hashType val)
 			tempTable[i].removeFirst();
 		}
 
-	delete tempTable;
+    delete[] tempTable;
 }
 
 void Hasher::changeHash(hashType val)

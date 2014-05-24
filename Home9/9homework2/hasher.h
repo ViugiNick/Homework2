@@ -20,7 +20,7 @@ class Hasher
 {
 public:
     Hasher(int size);
-
+    ~Hasher();
 	bool isContained(int value);
 	void addToHash(int value);
 	void removeFromHash(int value);
@@ -35,7 +35,7 @@ public:
 
 	int findMaxCollision();
 	void printStatistic();
-
+private:
 	/// Array of objects of List class.
     int hashSize;
     QList<int> *hashTable;
