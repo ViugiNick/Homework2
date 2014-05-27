@@ -33,30 +33,44 @@ public:
     ~RSSWidget();
 
 private slots:
+    ///Updating left column (list of  feeds)
     void generateListOfRSS();
+    ///Adding new feed
     void addRSS();
+    ///Deleting feed
     void deleteRSS();
+    ///Pressing  on title -> opening text of feed
     void pressOnTitle(QListWidgetItem *sender);
+    ///Opening list  of titles
     void pressOnFeed();
+    ///Parsing RSS from file name
     void parseRSS(QString name);
+    ///RSS loaded
     void loaded();
+    ///Updating following feed
     void updateFile();
+    ///Updaing all feeds
     void update();
 
 private:
     QString nameOfFile(QString str);
     Ui::Widget *ui;
+    ///Setof all feeds
     std::set <QString> feeds;
     int oldSize;
     int oldSizeOfTitles;
     int numberOfFeeds;
+    ///Set of  QStrings for updating
     std::set<QString> updatingFiles;
 
     QWebView *view;
     XmlSimpleHandler *handler = new XmlSimpleHandler();
 
+    ///Map with crosses
     std::map <QPushButton *, QString> croses;
+    ///Map with feeds
     std::map <QPushButton *, QString> buttons;
+    ///Map with titles
     std::map <QListWidgetItem *, QString> titles;
 };
 
