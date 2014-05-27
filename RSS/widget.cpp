@@ -37,13 +37,14 @@ RSSWidget::RSSWidget(QWidget *parent) :
 
 void RSSWidget::update()
 {
+    updatingFiles.clear();
     for(std::set<QString>::iterator it = feeds.begin(); it != feeds.end(); it++)
     {
         view = new QWebView();
 
         view->load(QUrl(*it));
 
-        updatingFile = *it;
+        updatingFiles.insert(*it);
 
         connect(view, SIGNAL(loadFinished(bool)), this, SLOT(updateFile()));
         //std::cerr << (*it).toStdString() << " " << "Updated" << std::endl;
@@ -52,9 +53,13 @@ void RSSWidget::update()
 
 void RSSWidget::updateFile()
 {
+    QString updatingFile = *(updatingFiles.begin());
+    updatingFiles.erase(updatingFiles.begin());
+
+    std::cerr << "Updated" << updatingFile.toStdString() << std::endl;
+
     QString info = view->page()->mainFrame()->toHtml();
     QFile file(nameOfFile(updatingFile));
-    std::cerr << nameOfFile(updatingFile).toStdString() << std::endl;
 
     if(file.open(QIODevice::WriteOnly))
     {

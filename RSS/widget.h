@@ -12,6 +12,7 @@
 #include <QWidget>
 #include <QListWidget>
 #include <set>
+#include <vector>
 #include <string>
 #include <QPushButton>
 #include "xmlsimplehendler.h"
@@ -49,7 +50,7 @@ private:
     int oldSize;
     int oldSizeOfTitles;
     int numberOfFeeds;
-    QString updatingFile;
+    std::set<QString> updatingFiles;
 
     QWebView *view;
     XmlSimpleHandler *handler = new XmlSimpleHandler();
