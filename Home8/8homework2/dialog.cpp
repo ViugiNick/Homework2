@@ -21,7 +21,7 @@ Dialog::~Dialog()
     delete ui;
 }
 
-void Dialog::activatedSuxButton()
+void Dialog::activatedButton(int dRaing)
 {
     if(used.count(ui->idLine->text().toInt()) > 0)
     {
@@ -29,50 +29,35 @@ void Dialog::activatedSuxButton()
         return;
     }
     QString tmpURL = "http://bash.im/quote/" + quotes.at(currQuote).toPlainText().mid(1);
-    vote(ui->idLine->text().toInt(), -1);
+    vote(ui->idLine->text().toInt(), dRaing);
     QUrl url(tmpURL);
 
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
 
     QNetworkAccessManager *tmp = new QNetworkAccessManager(this);
-    tmp->post(request, "/sux");
+
+    if(dRaing == -1)
+        tmp->post(request, "/sux");
+    if(dRaing == 1)
+        tmp->post(request, "/rulez");
+    if(dRaing == 0)
+        tmp->post(request, "/bayan");
+}
+
+void Dialog::activatedSuxButton()
+{
+    activatedButton(-1);
 }
 
 void Dialog::activatedRulezButton()
 {
-    if(used.count(ui->idLine->text().toInt()) > 0)
-    {
-        cantVote();
-        return;
-    }
-    QString tmpURL = "http://bash.im/quote/" + quotes.at(currQuote).toPlainText().mid(1);
-    vote(ui->idLine->text().toInt(), 1);
-    QUrl url(tmpURL);
-
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
-
-    QNetworkAccessManager *tmp = new QNetworkAccessManager(this);
-    tmp->post(request, "/rulez");
+    activatedButton(1);
 }
 
 void Dialog::activatedBayanButton()
 {
-    if(used.count(ui->idLine->text().toInt()) > 0)
-    {
-        cantVote();
-        return;
-    }
-    QString tmpURL = "http://bash.im/quote/" + quotes.at(currQuote).toPlainText().mid(1);
-    vote(ui->idLine->text().toInt(), 0);
-    QUrl url(tmpURL);
-
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
-
-    QNetworkAccessManager *tmp = new QNetworkAccessManager(this);
-    tmp->post(request, "/bayan");
+    activatedButton(0);
 }
 
 void Dialog::activatedLoadButton()

@@ -31,6 +31,8 @@ class Dialog : public QDialog
         void activatedSuxButton();
         void activatedRulezButton();
         void activatedBayanButton();
+        void activatedButton(int dRaing);
+
         void activatedLoadButton();
         void activatedNextButton();
         void loaded();
