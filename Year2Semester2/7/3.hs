@@ -24,3 +24,17 @@ remove k (HashTable f t) = HashTable f (removeHelper (f k) t) where
                           | x > fst l  = removeHelper x ls
                           | otherwise  = ls
     removeHelper x [] = []
+
+addState key val = do
+         cur <- get
+         put $ add key val cur
+
+removeState key = do
+         cur <- get
+         put $ remove key cur
+
+myhash = add "caba" "caba" $ HashTable (\v -> (foldl (\x y -> x + (ord y)) 0 v) `mod` 239017) []
+
+main = do
+     x <- return $ table $ execState (addState "daba" "daba") myhash
+     putStr $ show $ x
